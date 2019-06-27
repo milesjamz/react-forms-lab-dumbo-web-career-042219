@@ -23,13 +23,15 @@ handlePasswordInputChange = (e) => {
 }
 
 handleSubmit = (e) => {
+  e.preventDefault()
   if (!this.state.username || !this.state.password) return
-    this.props.handleLogin(e, this.state)
+    this.props.handleLogin(this.state)
 }
 
   render() {
     return (
-      <form>
+      <form
+          onSubmit={this.handleSubmit}>
         <div>
           <label>
             Username
@@ -54,9 +56,7 @@ handleSubmit = (e) => {
           </label>
         </div>
         <div>
-          <button type="submit"
-                  onClick={this.handleSubmit}
-          >Log in</button>
+          <button type="submit">Log in</button>
         </div>
       </form>
     );
